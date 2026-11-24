@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MKG - NC Online Updates</title>
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #f6f7f9; color: #1f242c; margin: 0; padding: 32px 16px; }
+    .card { max-width: 680px; margin: 0 auto; background: #fff; border: 1px solid #d9dfe8; border-radius: 10px; padding: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+    h1 { margin: 0 0 8px; font-size: 20px; }
+    .meta { color: #526071; font-size: 13px; margin-bottom: 18px; }
+    .row { display: flex; justify-content: space-between; padding: 8px 0; border-top: 1px solid #eef1f5; font-size: 13px; }
+    .code { font-family: Consolas, monospace; font-size: 12px; background: #f0f3f8; padding: 2px 6px; border-radius: 4px; word-break: break-all; }
+    a.btn { display: inline-block; margin: 16px 8px 0 0; padding: 9px 14px; background: #1d6b99; color: #fff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600; }
+    a.btn.sec { background: #3b4858; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 id="title">MKG - NC · Trung Tâm Cập Nhật Trực Tuyến</h1>
+    <div class="meta" id="msg">Đang tải thông tin phiên bản...</div>
+    <div class="row"><span>Phiên bản Plugin</span><strong id="ver">—</strong></div>
+    <div class="row"><span>Phiên bản Cấu hình</span><strong id="cfg">—</strong></div>
+    <div class="row"><span>Chế độ đồng bộ</span><strong id="mode">—</strong></div>
+    <div class="row"><span>Cập nhật lúc</span><strong id="pub">—</strong></div>
+    <div class="row"><span>SHA-256 RBZ</span><span class="code" id="sha">—</span></div>
+    <div>
+      <a class="btn" id="dl" href="./mkg_nc.rbz">Tải bản mới nhất (.rbz)</a>
+      <a class="btn sec" href="./manifest.json">Xem manifest.json</a>
+      <a class="btn sec" href="./config_bundle.json">Xem config_bundle.json</a>
+    </div>
+  </div>
+  <script>
+    fetch('./manifest.json?ts=' + Date.now()).then(r => r.json()).then(m => {
+      document.getElementById('title').textContent = m.title || 'MKG - NC';
+      document.getElementById('msg').textContent = m.message || '';
+      document.getElementById('ver').textContent = 'v' + (m.plugin_version || m.version || '');
+      document.getElementById('cfg').textContent = 'v' + (m.config_version || '');
+      document.getElementById('mode').textContent = (m.config_mode || 'overwrite').toUpperCase();
+      document.getElementById('pub').textContent = m.published_at || '';
+      document.getElementById('sha').textContent = m.sha256 || '';
+      if (m.rbz_filename) {
+        const dl = document.getElementById('dl');
+        dl.href = './' + m.rbz_filename;
+        dl.textContent = 'Tải ' + m.rbz_filename + ' (v' + (m.plugin_version || m.version) + ')';
+      }
+    }).catch(() => {
+      document.getElementById('msg').textContent = 'Không đọc được manifest.json.';
+    });
+  </script>
+</body>
+</html>

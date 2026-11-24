@@ -1,0 +1,5 @@
+dist/
+*.rbz
+.publish_status.json
+*.log
+*.tmp
