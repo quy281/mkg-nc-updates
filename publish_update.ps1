@@ -73,8 +73,8 @@ try {
   if ($LASTEXITCODE -ne 0) { throw "Git push len GitHub that bai." }
 
   $tag = "v$Version"
-  $null = & gh release view $tag 2>&1
-  if ($LASTEXITCODE -eq 0) {
+  $existingTags = @(& gh release list --limit 30 --json tagName | ConvertFrom-Json | ForEach-Object { $_.tagName })
+  if ($existingTags -contains $tag) {
     & gh release upload $tag $rbzPath $latestRbz --clobber
   } else {
     & gh release create $tag $rbzPath $latestRbz --title "MKG - NC $tag" --notes "Phien ban v$Version & Cau hinh dong bo v$cfgVer"
