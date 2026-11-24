@@ -56,16 +56,16 @@ try {
 
   $wranglerCmd = Get-Command wrangler -ErrorAction SilentlyContinue
   if ($wranglerCmd) {
-    & $wranglerCmd.Source pages deploy dist --project-name mkg-nc-updates --branch main
+    & $wranglerCmd.Source pages deploy dist --project-name mkg-nc-updates --branch main --commit-dirty=true
   } else {
-    & npx --yes wrangler pages deploy dist --project-name mkg-nc-updates --branch main
+    & npx --yes wrangler pages deploy dist --project-name mkg-nc-updates --branch main --commit-dirty=true
   }
   if ($LASTEXITCODE -ne 0) { throw "Cloudflare Pages deploy that bai (exit $LASTEXITCODE)." }
 
   # 2. Day len GitHub (manifest + config_bundle + index) & GitHub Release asset (.rbz)
   git add manifest.json config_bundle.json index.html README.md .gitignore publish_update.ps1
-  $pending = git status --porcelain
-  if (-not [string]::IsNullOrWhiteSpace(($pending | Out-String))) {
+  & git diff --cached --quiet
+  if ($LASTEXITCODE -ne 0) {
     git commit -m "Release v$Version (config v$cfgVer)"
     if ($LASTEXITCODE -ne 0) { throw "Git commit that bai." }
   }

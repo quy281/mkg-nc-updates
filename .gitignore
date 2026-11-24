@@ -1,4 +1,5 @@
 dist/
+.wrangler/
 *.rbz
 .publish_status.json
 *.log
