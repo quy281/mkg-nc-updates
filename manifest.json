@@ -1,23 +1,23 @@
 {
   "schema": 1,
-  "plugin_version": "1.12.0",
-  "version": "1.12.0",
+  "plugin_version": "1.13.0",
+  "version": "1.13.0",
   "enabled": true,
   "isfree": true,
-  "title": "MKG - NC v1.12.0",
-  "message": "Cập nhật MKG - NC v1.12.0 & Đồng bộ cấu hình chuẩn v2026.11.25.070330.",
-  "sha256": "592ac611455281d04db3defe5317a9bca611eeeaa9da3e833cee594c294a14a6",
-  "rbz_filename": "mkg_nc_v1.12.rbz",
+  "title": "MKG - NC v1.13.0",
+  "message": "Cập nhật MKG - NC v1.13.0: thêm nút Cập Nhật Online & đồng bộ v2026.11.25.072155.",
+  "sha256": "8fc9a8b78bc90472c16b9205aedcb652bf50e051bfa1ec0dc7c1623008e9270a",
+  "rbz_filename": "mkg_nc_v1.13.rbz",
   "download_urls": [
-    "https://mkg-nc-updates.pages.dev/mkg_nc_v1.12.rbz",
-    "https://github.com/quy281/mkg-nc-updates/releases/download/v1.12.0/mkg_nc_v1.12.rbz"
+    "https://mkg-nc-updates.pages.dev/mkg_nc_v1.13.rbz",
+    "https://github.com/quy281/mkg-nc-updates/releases/download/v1.13.0/mkg_nc_v1.13.rbz"
   ],
-  "config_version": "2026.11.25.070330",
+  "config_version": "2026.11.25.072155",
   "config_mode": "overwrite",
-  "config_sha256": "46d93d5b55a79c352f2b4b4bf5f105fb35b13fb2739ad9bb0d3b9de20d0da268",
+  "config_sha256": "f7e569ab171c39a501317ad157e018d37c2c18eefa1e4b66dffe8adfb21eac0a",
   "config_urls": [
     "https://mkg-nc-updates.pages.dev/config_bundle.json",
     "https://raw.githubusercontent.com/quy281/mkg-nc-updates/main/config_bundle.json"
   ],
-  "published_at": "2026-11-25 07:03:30"
+  "published_at": "2026-11-25 07:21:55"
 }
