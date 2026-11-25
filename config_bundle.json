@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "plugin_version": "1.11.0",
-  "config_version": "2026.11.25.033801",
-  "exported_at": "2026-11-25 03:38:01",
+  "plugin_version": "1.12.0",
+  "config_version": "2026.11.25.070330",
+  "exported_at": "2026-11-25 07:03:30",
   "config_mode": "overwrite",
   "core_config": {
     "nesting": {
